@@ -1,0 +1,45 @@
+html,
+body {
+  min-width: 100%;
+
+
+}
+
+body {
+  font-family: Inter;
+  background: var(--color-background);
+  scroll-behavior: smooth;
+}
+
+*,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+ul,
+li,
+label,
+input,
+select,
+textarea,
+button {
+  -webkit-font-smoothing: antialiased !important;
+  -webkit-tap-highlight-color: transparent;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  color: var(--color-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Bebas Neue';
+}

@@ -1,0 +1,27 @@
+version: '0.0.1'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: front-test-1-dev
+    restart: unless-stopped
+    ports:
+      - '3003:3003'
+    environment:
+      - TZ=Europe/Moscow
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=traefiknetwork'
+      - 'traefik.http.routers.web.entrypoints=https'
+      - 'traefik.http.services.web.loadbalancer.server.port=3003'
+      - 'traefik.http.routers.web.rule=Host(``)'
+      - 'traefik.http.routers.web.tls.certresolver=letsEncrypt'
+    networks:
+      - traefiknetwork
+
+networks:
+  traefiknetwork:
+    name: traefiknetwork
+    driver: bridge
+    external: true

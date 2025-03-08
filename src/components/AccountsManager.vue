@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import AccountItem from '@/components/AccountItem.vue'
+import Sign from '@/components/Icons/ExclamationSign.vue'
+import Sad from '@/components/Icons/SadEmj.vue'
 import { useAccountsStore } from '@/stores/accounts'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
-
 const accountsStore = useAccountsStore()
 const { accounts } = storeToRefs(accountsStore)
 
@@ -29,9 +30,11 @@ const headers = [
       <el-button type="primary" color="lightgray" circle @click="addAccount"> + </el-button>
     </div>
     <div class="accounts-manager_hint" v-if="accountsStore.accounts.length">
-      <small>Для указания нескольких меток используйте разделитель ";"</small>
+      <Sign />
+      <small> Для указания нескольких меток используйте разделитель ";"</small>
     </div>
     <div class="accounts-manager_hint" v-else>
+      <Sad />
       <p>Записей нет.</p>
     </div>
     <!-- <pre>{{ accounts }}</pre> -->
@@ -69,6 +72,9 @@ const headers = [
   }
   &_hint {
     margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
   &_list {
     margin-top: 16px;
